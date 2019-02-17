@@ -5,6 +5,7 @@ body {
   min-width: 480px;
   margin: 0 auto;
   background-color: gainsboro;
+  color: #000655;
   line-height: 1.5;
   font-size: 1.25rem;
 }
@@ -12,6 +13,20 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
+}
+
+.guessField {
+  padding: 5px;
+}
+
+.button {
+  padding: 5px 10px;
+  font-family: 'Exo 2', sans-serif;
+  color: #000655;
+}
+
+.guessSubmit:disabled {
+  color: graytext;
 }
 
 .lastResult {
