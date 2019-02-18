@@ -12,11 +12,38 @@ const turnsLeftText = "Turnos restantes: ";
 
 let guessCount = 1;
 let resetButton;
+let enterFired = false;
+
+guessField.focus();
 
 guessSubmit.addEventListener('click', checkGuess);
 
+guessField.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" && !enterFired) {
+    guessSubmit.click();
+    enterFired = true;
+    event.stopPropagation();
+  }
+});
+
+guessField.addEventListener('keyup', function(event) {
+  if(event.key === "Enter")
+  {
+    enterFired = false;
+  }
+});
+
 function checkGuess() {
+
   let userGuess = Number(guessField.value);
+
+  if( (isNaN(userGuess)) || (guessField.value.trim().length === 0) ||
+  (userGuess < 0 || userGuess > 100) || (userGuess !== Math.floor(userGuess)))
+  {
+    alert("É necessário informar um número inteiro de 0 a 100!");
+    return;
+  }
+
   if (guessCount === 1) {
     guesses.textContent = 'Palpites anteriores: ';
     turnsLeft.textContent = turnsLeftText;
